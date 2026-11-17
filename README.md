@@ -1,5 +1,10 @@
 # EH-Poem-Style
 
+[English](README.en.md) | **中文**
+
+![CI](https://github.com/ChenyangZhao7/eh-poem-style/actions/workflows/ci.yml/badge.svg)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+
 用你自己写的 56 首作品做风格样本，生成古体诗、律诗、绝句与词。
 
 - 诗：中华新韵，只校验押韵与句数/字数，不查平仄。
