@@ -1,37 +1,37 @@
 # EH-Poem-Style
 
-[English](README.en.md) | **中文**
+**English** | [中文](README.zh-CN.md)
 
 ![CI](https://github.com/ChenyangZhao7/eh-poem-style/actions/workflows/ci.yml/badge.svg)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-用你自己写的 56 首作品做风格样本，生成古体诗、律诗、绝句与词。
+Generate classical Chinese poetry — ancient-style verse, regulated verse (lüshi), quatrains (jueju), and ci — using 56 of your own poems as the style sample.
 
-- 诗：中华新韵，只校验押韵与句数/字数，不查平仄。
-- 词：按词牌谱严格校验平仄、句读、韵位与韵部（中华新韵）。
-- 模型可替换：DeepSeek V4.1 与本地 Ollama（默认 `qwen3.5:4b`）可同题对比。
-- 所有生成、重试、人工修改都会落盘，语料持续增长。
+- Shi: uses Zhonghua Xinyun; validates rhyme and line/character counts only, not tonal patterns.
+- Ci: strictly validates tones, pauses, rhyme positions and rhyme groups against cipai templates (Zhonghua Xinyun).
+- Swappable models: DeepSeek V4.1 and local Ollama (default `qwen3.5:4b`) can be compared on the same prompt.
+- Every generation, retry and manual edit is persisted, so the corpus keeps growing.
 
-## 快速开始
+## Quick start
 
 ```powershell
 python -m pip install -e ".[dev]"
 Copy-Item config.example.toml config.toml
-$env:DEEPSEEK_API_KEY = "你的 key"
+$env:DEEPSEEK_API_KEY = "your key"
 python -m pytest -q
 python -m eh_poem_style --help
 ```
 
-## 语料与 few-shot
+## Corpus and few-shot
 
-- `corpus/seed/seed.md`：用户最初的 56 首，只读。
-- `style/fewshot.txt`：精选 10 首，进入提示词；其余作品只参与统计与将来微调。
-- `corpus/drafts/`：AI 生成或 AI 参与的草稿（`status: draft`），不进入 few-shot。
-- `corpus/poems/`：用户确认的定稿（`status: final`）。
+- `corpus/seed/seed.md`: the user's original 56 poems, read-only.
+- `style/fewshot.txt`: 10 selected poems used in the prompt; the rest only feed statistics and future fine-tuning.
+- `corpus/drafts/`: AI-generated or AI-assisted drafts (`status: draft`), excluded from few-shot.
+- `corpus/poems/`: user-approved final poems (`status: final`).
 
-设计与计划：
+Design and plan:
 
-- 设计：`docs/superpowers/specs/2026-11-06-eh-poem-style-design.md`
-- 计划：`docs/superpowers/plans/2026-11-06-eh-poem-style.md`
+- Design: `docs/superpowers/specs/2026-11-06-eh-poem-style-design.md`
+- Plan: `docs/superpowers/plans/2026-11-06-eh-poem-style.md`
 
-`demo.py` 是早期竖切演示，正式功能以 `eh_poem_style` 包为准。
+`demo.py` is an early vertical-slice demo; the `eh_poem_style` package is the canonical implementation.
